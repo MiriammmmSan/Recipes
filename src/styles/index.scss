@@ -1,0 +1,168 @@
+:root{
+    --background-color: #fff;
+    --background-light: #fff;
+    --shadow-color: rgba(0,0,0,0.2);
+    --primary-color: rgb(157, 71, 168);
+    --text-color: #0A0A0A;
+    --text-light: #575757;
+    --font-size: 16px;
+    --animation-speed: 1;
+}
+
+@function getAnimationDuration($duration: number) {
+    @return calc($duration * var(--animation-speed));
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    font-size: var(--font-size);
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 55px;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    object-fit: cover;
+}
+
+.btn{
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: .5em .8em;
+    text-transform: uppercase;
+    font-size: 1em;
+    border-radius: 5%;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    &:hover{
+        box-shadow: 0 1px 3px var(--shadow-color);
+    }
+
+}
+
+.custom-img{
+    height: 0;
+    width: 100%;
+    position: relative;
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@import "partials/navbar";
+
+.section{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 3vw;
+    .title{
+        color:var(--text-color);
+        font-size: 2.5em;
+        margin-bottom: .25em;
+        font-weight: 700;
+    }
+    .col{
+        width: 50%;
+
+    }
+    .info{
+        color:var(--text-light);
+        font-size: 1em;
+        margin-bottom: 1.2em;
+        letter-spacing: 1px;
+        line-height: 1.3;
+    }
+}
+
+@import "partials/hero_section";
+
+@import "partials/improve_section";
+
+@import "partials/previos_search";
+
+.recipes-conteiner{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 1.5em;
+}
+
+.recipe-card{
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.main{
+    padding-block: 3vw;
+}
+
+.container {
+    padding-inline: 25vw ;
+}
+
+@import "partials/animation";
+
+@media screen and (max-width: 1280px){
+    .container{
+        padding-inline: 18vw;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .container{
+        padding-inline: 12vw;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .navbar{
+        .nav-links{
+            display: none;
+        }
+        .sidebar-btn{
+            display: block;
+        }
+    }
+    .section{
+       .col{
+           width: 100%;
+           padding: 0 !important;
+           text-align: center;
+           margin-bottom: 2em;
+       } 
+    }
+    .container{
+        padding-inline: 6vw;
+    }
+    .skill-item{
+        display: inline-block;
+        margin: 1em;
+    }
+    .section.improve-skills .btn{
+        display: block;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 480px){
+    .container{
+        padding-inline: 3vw;
+    }
+}
