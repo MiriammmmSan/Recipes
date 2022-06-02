@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Recipes from "./pages/Recipes";
 import Settings from "./pages/Settings";
+import Footer from "./components/Footer";
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/settings" element={<Settings/>}/>
         </Routes>
       </div>
+      <Footer/>
     </Router>
   )
 }
