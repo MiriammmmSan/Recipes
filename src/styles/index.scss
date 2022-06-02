@@ -72,6 +72,9 @@ img{
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 3vw;
+    &.d-block{
+        display: block;
+    }
     .title{
         color:var(--text-color);
         font-size: 2.5em;
@@ -100,6 +103,53 @@ img{
 @import "partials/footer";
 
 @import "partials/recipe_card";
+
+.option-container{
+    box-shadow: 0 5px 10px var(--shadow-color);
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    border-left: .5em solid var(--primary-color);
+    background-color: var(--background-color);
+    margin-top: 1em;
+    .option{
+        height: 3em;
+        width: 3em;
+        box-shadow: 0 3px 6px var(--shadow-color);
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.light{
+            background-color:  rgb(244, 235, 247);
+        }
+        &.dark{
+            background-color: #5f5d5f;
+        }
+        .check{
+            height: 2em;
+            width: 2em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            svg{
+                height: 1em;
+                width: 1em;
+            }
+            
+        }
+        .btn span{
+            margin-right: .5em;
+            display: inline-block;
+        }
+    }
+}
+.d-block h2{
+    font-size: 1.75em;
+}
 
 .main{
     padding-block: 3vw;

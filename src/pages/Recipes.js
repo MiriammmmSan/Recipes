@@ -41,7 +41,9 @@ export default function Recipes (){
     ].sort(() => Math.random() - 0.5)
     return (
         <div>
-           <PreviousSearch/>
+           <PreviousSearch
+           placeholder="Search"
+           onChange={(e) => console.log(e.target.value)}/>
            <div className="recipes-conteiner">
             {/*<RecipesCard/> */}
             {recipes.map((recipe, index) => (

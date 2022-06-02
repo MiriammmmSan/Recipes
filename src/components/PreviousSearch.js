@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-export default function PreviousSearch(){
+export default function PreviousSearch({onChange,placeholder}){
     const searches = ['soup', 'rice', 'noodles', 'salad', 'spicy', 'dessert'];
     return (
         <div className="previous-search section">
             <div className="search-box">
-                <input type="text" placeholder="Search for a recipe" />
+                <input type="text"  onChange={onChange} placeholder={placeholder} />
                 <button className="btn">
                  <FontAwesomeIcon icon={faSearch}/>
                 </button>
