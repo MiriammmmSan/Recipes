@@ -1,9 +1,69 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheck } from "@fortawesome/free-solid-svg-icons"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Settings (){
+    const [settings, setSettings] = useState({
+        "--background-color": "#fff",
+        "--background-light": "#fff",
+        "--shadow-color": "rgba(0,0,0,0.2)",
+        "--primary-color": "rgb(157, 71, 168)",
+        "--text-color": "#0A0A0A",
+        "--text-light": "#575757",
+       " --font-size": "16px"
+    })
+    
+    useEffect(() => {
+        const root = document.documentElement
+        for(let key in settings){
+            root.style.setProperty(key, settings[key])
+        }
+    }, [settings])
+
     const [theme, setTheme] = useState("light")
+    const themes =[
+        {
+            "--background-color": "#fff",
+            "--background-light": "#fff",
+            "--shadow-color": "rgba(0,0,0,0.2)",
+            "--text-color": "#0A0A0A",
+            "--text-light": "#575757",
+        },
+        {
+            "--background-color": "#323740",
+            "--background-light": "#323740",
+            "--shadow-color": "#D4CEF2",
+            "--text-color": "#fff",
+            "--text-light": "#D4CEF2",
+        }
+    ]
+
+    function changeTheme(i){
+        const _theme = {...themes[i]}
+        setTheme(i === 0 ? "light" : "dark")
+        let _settings = {...settings}
+        for(let key in _theme){
+            _settings[key]=_theme[key]
+        }
+        setSettings(_settings)
+    }
+
+    function changeColor(i){
+        const _color = primaryColors[i]
+        let _settings = {...settings}
+        _settings["--primary-color"] = _color
+        setPrimaryColor(i)
+        setSettings(_settings)
+    }
+
+    function changeFontSize(i){
+        const _size = fontSizes[i]
+        let _settings = {...settings}
+        _settings["--font-size"] = _size.value
+        setFontSize(i)
+        setSettings(_settings)
+    }
+
     const primaryColors = [
         "rgb(157, 71, 168)",
         "rgb(93, 91, 255)",
@@ -11,6 +71,7 @@ export default function Settings (){
         "rgb(232, 132, 24)"
 
     ]
+   
     const fontSizes= [
         {
             title: "Small",
@@ -26,21 +87,24 @@ export default function Settings (){
             value: "20px"
         }
     ]
+    
     const [primaryColor, setPrimaryColor] = useState(0);
+    
     const [fontSize, setFontSize] = useState(1);
+    
     return (
         <div>
             <div className="section d-block">
                 <h2>Theme</h2>
                 <div className="option-container">
-                    <div className="option light">
+                    <div className="option light" onClick={() => changeTheme(0)}>
                         {theme === "light" && (
                             <div className="check">
                                 <FontAwesomeIcon icon={faCheck}/>
                             </div>
                         )}
                     </div>
-                    <div className="option dark">
+                    <div className="option dark" onClick={() => changeTheme(1)}>
                         {theme === "dark" && (
                             <div className="check">
                                  <FontAwesomeIcon icon={faCheck}/>
@@ -53,7 +117,7 @@ export default function Settings (){
                 <h2>Primary Color</h2>
                 <div className="option-container">
                     { primaryColors.map((color, index) => (
-                        <div className="option light" style={{backgroundColor: color}}>
+                        <div className="option light" style={{backgroundColor: color}} onClick={() => changeColor(index)}>
                             {primaryColor === index && (
                             <div className="check">
                                 <FontAwesomeIcon icon={faCheck}/>
@@ -68,7 +132,7 @@ export default function Settings (){
                 <div className="option-container">
                     { fontSizes.map((size, index) => (
                         
-                     <button className="btn">
+                     <button className="btn" key={index} onClick={() => changeFontSize(index)}>
                           {size.title}
                          { fontSize === index && <span> <FontAwesomeIcon icon={faCheck}/> </span> }
                          </button>
