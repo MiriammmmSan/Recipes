@@ -1,5 +1,6 @@
 import PreviousSearch from "../components/PreviousSearch";
 import RecipesCard from "../components/RecipesCard";
+//import React, {useState} from 'react'
 
 export default function Recipes (){
     const recipes = [
@@ -39,13 +40,18 @@ export default function Recipes (){
             preview:"While Tartare is often associated with finely chopped raw beef, at fine dining restaurants, it's more common made with fish. Fish tartare is simple to make and incredibly good value compared to dining out. At a restaurant in Sydney, this plate of Tuna Tartare would cost at least $40 – probably more!",
         },
     ].sort(() => Math.random() - 0.5)
+
+
+   // const filteredRecipe = recipes.filter(recipe =>{
+   //     return recipe.name.toLowerCase().includes(value.toLowerCase())
+   // })
+
     return (
         <div>
            <PreviousSearch
            placeholder="Search"
-           onChange={(e) => console.log(e.target.value)}/>
+           />
            <div className="recipes-conteiner">
-            {/*<RecipesCard/> */}
             {recipes.map((recipe, index) => (
                 <RecipesCard key={index} recipe={recipe}/>
             ))}
