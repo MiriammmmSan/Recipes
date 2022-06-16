@@ -29,7 +29,7 @@ export default function PreviousSearch({placeholder}){
                  <FontAwesomeIcon icon={faSearch}/>
                 </button>
             </div>    
-             <h2>Previous Searches</h2>
+                 <h2 className="privios-searches">{searches.length > 0 && 'Previous Searches'}</h2>
                 <div className="previous-search-conteiner"> 
                           {searches?.map(item => <div key={item.text} className="search-item">{item.text}</div>)} 
                 </div>
